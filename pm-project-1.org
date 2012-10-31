@@ -15,15 +15,12 @@ from enthought.mayavi import mlab
 from ase.data import vdw_radii
 from ase.data.colors import cpk_colors
 from ase import Atom, Atoms
-# unit cell parameters
-a1=10.
-a2=10.
-a3=10.
+
 
 # creating atoms object
 atoms = Atoms([Atom('C', [2.422, 0.0, 0.0]),
                Atom('O', [3.578, 0.0, 0.0])],
-               cell=(a1,a2,a3))
+               cell=(10,10,10))
 atoms.center()
 
 # running dft calculation
@@ -35,29 +32,28 @@ with jasp('molecules/co-fog',
     atoms = calc.get_atoms()
     x, y, z, cd = calc.get_charge_density()
 
-# getting dimensions of the charge density
-n1, n2, n3=cd.shape
+# making a black background
 mlab.figure(bgcolor=(0, 0, 0))
 
 # plotting the atoms as spheres,
 
 for atom in atoms:
-    mlab.points3d(atom.x*n1/a1, # adjusting the atom positions to match shape of cd
-                  atom.y*n2/a2,
-                  atom.z*n3/a3,
-                  scale_factor=(n1/a1)*vdw_radii[atom.number]/5.,
+    mlab.points3d(atom.x,
+                  atom.y,
+                  atom.z,
+                  scale_factor=vdw_radii[atom.number]/5.,
                   resolution=20,
                   # a tuple is required for the color
                   color=tuple(cpk_colors[atom.number]),
                   scale_mode='none')
 
 # plotting the charge density
-source = mlab.pipeline.scalar_field(cd)
-min = cd.min()
-max = cd.max()
-# vmin and vmax adjusted by iteration
-vol = mlab.pipeline.volume(source, vmin=min+.1*(max-min),
-                                   vmax=min+(max-min))
+source = mlab.pipeline.scalar_field(x,y,z,cd)
+min=cd.min()
+max=cd.max()
+# vmin and vmax were adjusted by iteration
+vol = mlab.pipeline.volume(source, vmin=min+0.1*(max-min),
+                                   vmax=max)
 
 # view adjusted by iteration
 mlab.view(azimuth=-90, elevation=90, distance='auto')
@@ -80,14 +76,12 @@ from ase.data import vdw_radii
 from ase.data.colors import cpk_colors
 from ase import Atom, Atoms
 
-a1=8.
-a2=8.
-a3=8.
+# a similar approach to the one shown for the CO molecule has been taken
 
 atoms = Atoms([Atom('H', [0.5960812,  -0.7677068,   0.0000000]),
                Atom('O', [0.0000000,   0.0000000,   0.0000000]),
                Atom('H', [0.5960812,   0.7677068,   0.0000000])],
-               cell=(a1, a2, a3))
+               cell=(8, 8, 8))
 atoms.center()
 
 
@@ -105,20 +99,20 @@ mlab.figure(bgcolor=(0, 0, 0))
 
 
 for atom in atoms:
-    mlab.points3d(atom.x*n1/a1,
-                  atom.y*n2/a2,
-                  atom.z*n3/a3,
-                  scale_factor=(n1/a1)*vdw_radii[atom.number]/5.,
+    mlab.points3d(atom.x,
+                  atom.y,
+                  atom.z,
+                  scale_factor=vdw_radii[atom.number]/5.,
                   resolution=20,
                   color=tuple(cpk_colors[atom.number]),
                   scale_mode='none')
 
 
-source = mlab.pipeline.scalar_field(cd)
+source = mlab.pipeline.scalar_field(x,y,z,cd)
 min = cd.min()
 max = cd.max()
 vol = mlab.pipeline.volume(source, vmin=min+.1*(max-min),
-                                   vmax=min+(max-min))
+                                   vmax=max)
 
 mlab.savefig('molecules/water-fog.png')
 mlab.show()
