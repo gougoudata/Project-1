@@ -1,0 +1,1 @@
+This is an attempt to plot electron density as a fog instead of using isosurfaces. An example org file has been uploaded that contains how to plot the electron density for a CO molecules. Images and jasp files are also included.
