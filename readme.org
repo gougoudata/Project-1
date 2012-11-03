@@ -1,0 +1,22 @@
+* About this Project
+
+This project aims to plot electron density as a "fog" rather than with isosurfaces using the visualization tool, Mayavi. DFT calculations have been performed using Jasp to generate the data.
+
+A step by step approach has been used to illustrate how the final method of plotting the charge density was formulated. Examples of different have been provided with every step. A python module has been written which plots the electron density using volume rendering using the DFT files produced using jasp. Details and examples on usage of the module  have been documented.
+
+The code has been tested for cubic and non-cubic unit cells and an issue regarding the low opacity of the electron fog has also been resolved by using the opacity transfer function in Mayavi.
+
+As per the Mayavi documentation, the limitation of using volume rendering is that it can be difficult to analyze the details of the plotted field, even though it might look pretty. Other than that, no significant errors can be seen with the plots and the plotting works well with simple molecules like H_{2}O and CO to more complex molecules like CHCl_{3} and CF_{3}Br. One frustrating thing about making such plots is that one has to manually adjust parameters to get the desired opacity of the fog using the standard process. An effort to resolve this using the opacity transfer function has been made, and once the afore mentioned python module has been formulated, its usage is much less tedious.
+
+
+
+The code has been adapted from the examples in Dft-book and the example given on http://docs.enthought.com/mayavi/mayavi/auto/example_chemistry.html.
+
+The mayavi documentation on volume rendering (http://docs.enthought.com/mayavi/mayavi/mlab.html#visualizing-volumetric-scalar-data) and the jasp module for plotting charge density (https://github.com/jkitchin/jasp/blob/master/CHG.py) have been used as reference.
+
+The opacity transfer function has been adapted from the code on http://code.enthought.com/projects/files/ETS32_API/enthought.mayavi.tools.modules.VolumeFactory.html.
+
+
+This repository contains the files pm-project-1.org and pm-project-1.pdf which detail the approach taken to plot the charge density. The python source code has been uploaded in the file PlotFog.py. Images and example jasp files are contained in the molecules folder. Example jasp files have only been provided for the final two calculations using chloroform and carbon dioxide conisdering the size of such files.
+
+Final comment- this project was fun.
