@@ -257,7 +257,7 @@ Changing 'vmin' and 'vmax' values manually is quite tedious and doesn't allow us
 
 The procedure using a CF_{3}Br molecule is described in the follwing section.
 
-#+begin_src python
+#+BEGIN_SRC python
 from jasp import *
 from enthought.mayavi import mlab
 from ase.data import vdw_radii
@@ -321,7 +321,7 @@ mlab.view(azimuth=-45, elevation=30, distance='auto')
 
 mlab.savefig('molecules/CF3Br-fog.png')
 mlab.show()
-#+end_src
+#+END_SRC
 
 #+RESULTS:
 
@@ -343,7 +343,7 @@ With everything in place we can now use our module to plot charge density for th
 
 
 
-#+begin_src python
+#+BEGIN_SRC python
 from jasp import *
 from ase.data.molecules import molecule
 from PlotFog import *
@@ -373,7 +373,7 @@ plot_charge_density_fog('molecules/example/chloroform-fog',
 
 
 
-#+end_src
+#+END_SRC
 
 
 #+RESULTS:
@@ -384,7 +384,7 @@ Charge Density for Chloroform.
 
 [[./molecules/chloroform-fog.png]]
 
-#+begin_src python
+#+BEGIN_SRC python
 from jasp import *
 from ase.data.molecules import molecule
 from PlotFog import *
@@ -412,7 +412,7 @@ plot_charge_density_fog('molecules/example/carbondioxide-fog',
                         filepath='molecules/co2-fog.png')
 
 
-#+end_src
+#+END_SRC
 
 #+RESULTS:
 
