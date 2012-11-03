@@ -5,7 +5,7 @@
 
 This project aims to plot electron density as a "fog" rather than with isosurfaces using the visualization tool, Mayavi. DFT calculations have been performed using Jasp to generate the data.
 
-A step by step approach has been used to illustrate how the final method of plotting the charge density was formulated. Examples of different have been provided with every step. A python module has been written which plots the electron density using volume rendering using the DFT files produced using jasp. Details and examples on usage of the module  have been documented. The source code has uploaded along with this file on github.
+A step by step approach has been used to illustrate how the final method of plotting the charge density was formulated. Examples of different molecules have been provided with every step. A python module has been written which plots the electron density using volume rendering. DFT calculations have been done using jasp. Details and examples on usage of the module  have been documented. The source code has uploaded along with this file on github.
 
 The code has been tested for cubic and non-cubic unit cells and an issue regarding the low opacity of the electron fog has also been resolved by using the opacity transfer function in Mayavi.
 
