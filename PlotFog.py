@@ -13,9 +13,9 @@ from ase import Atom, Atoms
 
 # UnitCell - determines whether the unit cell is to be plotted. Default is 'False'.
 
-# opacity - array that contains the minimum and maximum values of the opacity. Default is [0,1].
+# opacity - contains the minimum and maximum values of the opacity. Default is [0,1].
 
-# view - array contains the azimuth and the elevation. It is used to adjust the view. Default is [-90,90].
+# view - contains the azimuth and the elevation. It is used to adjust the view. Default is [-90,90].
 
 # SafeFig - Determines whether or not to save the file.
 
