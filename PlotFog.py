@@ -13,9 +13,9 @@ from ase import Atom, Atoms
 
 # UnitCell - determines whether the unit cell is to be plotted. Default is 'False'.
 
-# opacity - contains the minimum and maximum values of the opacity. Default is [0,1].
+# opacity - array that contains the minimum and maximum values of the opacity. Default is [0,1].
 
-# view - contains the azimuth and the elevation. It is used to adjust the view. Default is [-90,90].
+# view - array contains the azimuth and the elevation. It is used to adjust the view. Default is [-90,90].
 
 # SafeFig - Determines whether or not to save the file.
 
@@ -75,8 +75,8 @@ def plot_charge_density_fog(path, UnitCell=False, opacity=[0,1], view=[-90,90],S
     # Changing the otf
     from enthought.tvtk.util.ctf import PiecewiseFunction
     otf = PiecewiseFunction()
-    otf.add_point(vmin+0.1*(vmax-vmin),0)
-    otf.add_point(vmin+0.8*(vmax-vmin),0.8)
+    otf.add_point(vmin+0.1*(vmax-vmin),opacity[0])
+    otf.add_point(vmin+0.8*(vmax-vmin),opacity[1])
     vol._otf = otf
     vol._volume_property.set_scalar_opacity(otf)
 
